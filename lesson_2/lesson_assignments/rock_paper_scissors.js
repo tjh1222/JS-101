@@ -37,7 +37,7 @@ function displayScore() {
   console.log("------------------------------------------\n");
 }
 
-function checkForWinner() {
+function checkForMatchWinner() {
   if (scoreBoard.player1 === MAX_WINS) {
     return 'Player1';
   } else if (scoreBoard.computer === MAX_WINS) {
@@ -68,7 +68,7 @@ function displayRoundWinner(choice, computerChoice) {
 }
 
 function closestChoice(choice) {
-  if (choice === "") return "";
+  if (choice === "" || choice === "s") return "";
 
   let regex = new RegExp('^' + choice);
   for (let index = 0; index < VALID_CHOICES.length; index++) {
@@ -82,6 +82,11 @@ function closestChoice(choice) {
 function welcome() {
   console.log();
   prompt(`Welcome to ${VALID_CHOICES.join(", ")}. First to 5 wins is the winner!\n`);
+}
+
+function getComputerChoice() {
+  let randomIndex = Math.floor(Math.random() * VALID_CHOICES.length);
+  return VALID_CHOICES[randomIndex];
 }
 
 
@@ -106,8 +111,7 @@ while (true) {
     choice = closestChoice(choice);
   }
 
-  let randomIndex = Math.floor(Math.random() * VALID_CHOICES.length);
-  let computerChoice = VALID_CHOICES[randomIndex];
+  let computerChoice = getComputerChoice();
 
   displayRoundWinner(choice, computerChoice);
 
@@ -122,9 +126,9 @@ while (true) {
 
   updateScore(roundWinner);
 
-  let winner = checkForWinner();
-  if (winner) {
-    console.log(`${winner} wins the match!`);
+  let matchWinner = checkForMatchWinner();
+  if (matchWinner) {
+    console.log(`${matchWinner} wins the match!`);
 
     prompt('Do you want to play again (y/n)?');
     let answer = readline.question().toLowerCase();
