@@ -1,0 +1,6 @@
+{
+  "loanAmount": "Please provide loan amount?\n",
+  "APR": "Please provide the APR rate for this loan. Provide APR rate as percent(ex: input: 4 -> 4%)\n",
+  "duration": "Please provide the length of the loan in years\n",
+  "proceed": "Would you like to run another mortgagen scenario?. Press 'y' to continue or any other key to exit\n"
+}
