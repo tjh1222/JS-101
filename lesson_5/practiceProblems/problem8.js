@@ -12,13 +12,12 @@ let obj = {
 };
 
 const VOWELS = ['a', 'e', 'i', 'o', 'u'];
-
+let vowels = [];
 Object.values(obj).forEach(subArr => {
-  let vowels = [];
   subArr.forEach(word => {
     vowels.push(word.split("").filter((letter) => {
       return (VOWELS.includes(letter));
     }).join(""));
   });
-  console.log(vowels.join(""));
 });
+console.log(vowels.join(""));
